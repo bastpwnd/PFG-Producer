@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import org.springframework.context.annotation.ComponentScan;
+import presentation.rest.KafkaProducerResource;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.SpringApplication;
@@ -9,6 +11,7 @@ import java.text.MessageFormat;
 import java.util.Calendar;
 
 @SpringBootApplication
+@ComponentScan(basePackageClasses = KafkaProducerResource.class)
 public class ProducerApplication {
 
     private static final Log log = LogFactory.getLog(ProducerApplication.class);

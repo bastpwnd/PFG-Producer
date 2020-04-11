@@ -13,18 +13,19 @@ import java.util.Properties;
 
 public class Producer {
     private static final Log log = LogFactory.getLog(Producer.class);
+    KafkaProducer < String, String > producer ;
 
     public void createProducer(){
         Properties props = new Properties();
         props.put(ProducerConfig.CLIENT_ID_CONFIG, "ivan");
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka:9092");
         props.put(ProducerConfig.ACKS_CONFIG, "all");
         props.put(ProducerConfig.RETRIES_CONFIG, 0);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        producer = new KafkaProducer < > (props);
 
 
-        KafkaProducer < String, String > producer = new KafkaProducer < > (props);
         TestCallback callback = new TestCallback();
 
         for(int i = 0; i < 1; i++) {

@@ -9,6 +9,7 @@ import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.util.Properties;
+import java.util.Random;
 
 
 public class Producer {
@@ -22,7 +23,7 @@ public class Producer {
         TestCallback callback = new TestCallback();
 
         for(int i = 0; i < 1; i++) {
-            String sentence = "Producto Alimentario  "+ i;
+            String sentence = "Producto Alimentario :"+generateRandowId() ;
             //Se crea el dato que se enviara en un evento
             ProducerRecord < String, String > data = new ProducerRecord < String, String > (
                     "test_1", sentence);
@@ -56,6 +57,13 @@ public class Producer {
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 
         return props;
+    }
+
+    private static int generateRandowId() {
+
+        Random number = new Random();
+        return number.ints(0, 100).limit(1).findFirst().getAsInt();
+
     }
 
     /**

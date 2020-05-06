@@ -22,3 +22,22 @@ services:
     image: productor:1.0
     ports:
     - '9095:9095'
+  consumer:
+    image: consumidor1
+    ports:
+    - '9096:9096'
+  consumer2:
+    image: consumidor2
+    
+  PFGDATABASE:
+    image: mariadb:latest
+    healthcheck:
+      test: "exit 0"
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_USER: ivan
+        MYSQL_PASSWORD: ivan
+        MYSQL_DATABASE: PFG-DATABASE
+    ports:
+        - 3306:3306
+    

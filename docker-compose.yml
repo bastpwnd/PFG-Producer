@@ -41,8 +41,6 @@ services:
   PFGDATABASE:
     image: mariadb:latest
     container_name: MariaDB
-    healthcheck:
-      test: "exit 0"
     environment:
         MYSQL_ROOT_PASSWORD: root
         MYSQL_USER: ivan

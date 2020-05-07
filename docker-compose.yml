@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 services:
   zookeeper:
     image: 'bitnami/zookeeper:latest'
@@ -19,7 +19,7 @@ services:
       - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
       
   producer:
-    image: productor:1.0
+    image: productor
     ports:
     - '9095:9095'
   consumer:

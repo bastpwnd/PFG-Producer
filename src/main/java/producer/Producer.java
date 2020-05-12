@@ -24,7 +24,7 @@ public class Producer {
 
         for(int i = 0; i < 1; i++) {
 
-            String sentence = "Producto "+TypeProduct.getRandomProduct()+" :"+generateRandowId() ;
+            String sentence = "Producto "+TypeProduct.getRandomProduct()+" :"+generateRandomId();
             //Se crea el dato que se enviara en un evento
             ProducerRecord < String, String > data = new ProducerRecord < String, String > (
                     "test_1", sentence);
@@ -60,7 +60,7 @@ public class Producer {
         return props;
     }
 
-    private static int generateRandowId() {
+    private static int generateRandomId() {
 
         Random number = new Random();
         return number.ints(0, 200).limit(1).findFirst().getAsInt();

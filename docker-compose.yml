@@ -37,6 +37,7 @@ services:
     container_name: Consumidor2
     depends_on:
       - PFGDATABASE
+      - kafka
     
   PFGDATABASE:
     image: mariadb:latest

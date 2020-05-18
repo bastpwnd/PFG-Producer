@@ -16,6 +16,9 @@ public class Producer {
     private static final Log log = LogFactory.getLog(Producer.class);
     KafkaProducer < String, String > producer ;
 
+    /**
+     * Method to create producer to sent events, send one random product
+     */
     public void createProducer(){
         Properties props = initProperties();
         producer = new KafkaProducer < > (props);
@@ -43,8 +46,8 @@ public class Producer {
     }
 
     /**
-     * Properties to Kafka producer
-     * @return
+     * Method to inicializate Properties to Kafka producer
+     * @return props properties with values
      */
     public Properties initProperties(){
         Properties props = new Properties();
@@ -60,6 +63,10 @@ public class Producer {
         return props;
     }
 
+    /**
+     * Method to generate random integer between 0-200
+     * @return integer to set Id in product
+     */
     private static int generateRandomId() {
 
         Random number = new Random();
@@ -68,7 +75,7 @@ public class Producer {
     }
 
     /**
-     * Method to get callback when events sends
+     * Method to get callback when events sends, print result in log
      */
     private static class TestCallback implements Callback {
         @Override
